@@ -26,5 +26,15 @@ module RailsInsta
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    config.middleware.insert_before 0, Rack::Cors, :debug => true, :logger => (-> { Rails.logger }) do
+      allow do
+        origins 'http://localhost:4200'
+        resource '*',
+          :headers => :any,
+          :methods => [:get, :post, :delete, :put, :options, :head, :patch],
+          :max_age => 0,
+          :credentials => true
+      end
   end
 end

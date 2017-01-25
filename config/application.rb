@@ -36,5 +36,6 @@ module RailsInsta
           :max_age => 0,
           :credentials => true
       end
+    end
   end
 end

@@ -11,7 +11,8 @@ gem 'rails', '~> 5.0.1'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.18'
 gem 'hirb', '~> 0.7.3'
-gem 'active_model_serializers','~>0.10.0.rc1'
+gem 'active_model_serializers','~>0.10.0.rc5'
+gem 'json'
 gem 'faker', '~> 1.6', '>= 1.6.3'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

@@ -57,6 +57,7 @@ GEM
       activesupport (>= 4.1.0)
     hirb (0.7.3)
     i18n (0.7.0)
+    json (1.8.5)
     jsonapi (0.1.1.beta6)
       jsonapi-parser (= 0.1.1.beta3)
       jsonapi-renderer (= 0.1.1.beta1)
@@ -135,10 +136,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_model_serializers (~> 0.10.0.rc1)
+  active_model_serializers (~> 0.10.0.rc5)
   byebug
   faker (~> 1.6, >= 1.6.3)
   hirb (~> 0.7.3)
+  json
   listen (~> 3.0.5)
   pg (~> 0.18)
   puma (~> 3.0)

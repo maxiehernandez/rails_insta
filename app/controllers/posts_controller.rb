@@ -42,6 +42,18 @@ class PostsController < ApplicationController
     end
 
     def post_params
-      params.require(:data).require(:attributes).permit(:image_url, :name, :caption)
+      new_hash={}
+      if params[:data]&&params[:data][:attributes]
+        post_data=params[:data][:attributes]
+      else
+        post_data=params[:post]
+      end
+
+      post_data.each do |key,value|
+        new_hash[key.gsub("-","_")]=value
+      end
+
+      new_params=ActionController::Parameters.new(new_hash)
+      new_params.permit(:image_url, :name, :caption)
     end
 end

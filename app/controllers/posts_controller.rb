@@ -19,12 +19,10 @@ class PostsController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @post.update(post_params).save!
-        format.json { render :show, status: :ok, location: @post }
-      else
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update!(post_params)
+      render json: @post, status: 200
+    else
+      render json: @post.errors, status: 500
     end
   end
 

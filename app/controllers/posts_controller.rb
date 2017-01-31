@@ -52,6 +52,6 @@ class PostsController < ApplicationController
       end
 
       new_params=ActionController::Parameters.new(new_hash)
-      new_params.permit(:image_url, :name, :caption)
+      new_params.permit(:image_url, :name, :caption, :image)
     end
 end

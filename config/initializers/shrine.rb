@@ -6,6 +6,6 @@ Shrine.storages = {
   store: Shrine::Storage::FileSystem.new("public", prefix: "uploads/store"), # permanent
 }
 
-Shrine.plugin :postgresql # or :activerecord
+Shrine.plugin :activerecord # or :activerecord
 Shrine.plugin :cached_attachment_data # for forms
 Shrine.plugin :rack_file # for non-Rails apps

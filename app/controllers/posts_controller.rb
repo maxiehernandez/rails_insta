@@ -10,6 +10,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    save_image
     @post = Post.new(post_params)
     if @post.save!
       render json: { post: @post, comments: "" }, status: :created, localtion: @post
@@ -19,11 +20,19 @@ class PostsController < ApplicationController
   end
 
   def update
+    save_image
     if @post.update!(post_params)
       render json: @post, status: 200
     else
       render json: @post.errors, status: 500
     end
+  end
+
+  def save_image
+    uploader = ImageUploader.new(resource, :post)
+    uploader.store!(params['post']['thumbnail_image'])
+    resource.thumbnail_image = uploader.file
+    resource.save!
   end
 
   def destroy

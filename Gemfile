@@ -14,6 +14,9 @@ gem 'hirb', '~> 0.7.3'
 gem 'active_model_serializers','~>0.10.0.rc5'
 gem 'json'
 gem 'faker', '~> 1.6', '>= 1.6.3'
+gem 'carrierwave', '~> 0.11.2'
+gem 'fog', '~> 1.38'
+gem 'mini_magick', '~> 4.5', '>= 4.5.1'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

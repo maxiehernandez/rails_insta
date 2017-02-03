@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save!
-      render json: { post: @post, comments: "" }, status: :created, localtion: @post
+      render json: @post
     else
       render json: @post.errors, status: :unprocessable_entity
     end
@@ -28,9 +28,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.json { head :no_content }
-    end
+    render json: @post
   end
 
   private

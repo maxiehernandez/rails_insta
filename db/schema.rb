@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(version: 20170202200411) do
     t.text     "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text     "image_data"
   end
 
   add_foreign_key "comments", "posts"

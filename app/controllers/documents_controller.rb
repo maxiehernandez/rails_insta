@@ -15,6 +15,7 @@ class DocumentsController < ApplicationController
 
   # POST /documents
   def create
+    p "Hello", document_params.inspect, params.inspect
     @document = Document.new(document_params)
 
     if @document.save
@@ -40,24 +41,25 @@ class DocumentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_document
-      @document = Document.find(params[:id])
+  # Use callbacks to share common setup or constraints between actions.
+  def set_document
+    @document = Document.find(params[:id])
+  end
+
+  def document_params
+    puts params.inspect
+    new_hash={}
+    if params[:data]&&params[:data][:attributes]
+      document_data=params[:data][:attributes]
+    else
+      document_data=params[:document]
     end
 
-    def document_params
-      new_hash={}
-      if params[:data]&&params[:data][:attributes]
-        document_data=params[:data][:attributes]
-      else
-        document_data=params[:document]
-      end
-
-      document_data.each do |key,value|
-        new_hash[key.gsub("-","_")]=value
-      end
-
-      new_params=ActionController::Parameters.new(new_hash)
-      new_params.permit(:filename, :content_type, :file_contents, :file)
+    document_data.each do |key,value|
+      new_hash[key.gsub("-","_")]=value
     end
+
+    new_params=ActionController::Parameters.new(new_hash)
+    new_params.permit(:filename, :content_type, :file_contents, :file)
+  end
 end

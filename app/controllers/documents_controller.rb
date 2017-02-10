@@ -15,9 +15,6 @@ class DocumentsController < ApplicationController
 
   # POST /documents
   def create
-    p "==================================================="
-    p params
-    # document_params.inspect, params.inspect
     @document = Document.new(document_params)
 
     if @document.save

@@ -15,6 +15,9 @@ class DocumentsController < ApplicationController
 
   # POST /documents
   def create
+    p "==================================================="
+    p params
+    # document_params.inspect, params.inspect
     @document = Document.new(document_params)
 
     if @document.save
@@ -46,18 +49,6 @@ class DocumentsController < ApplicationController
     end
 
     def document_params
-      new_hash={}
-      if params[:data]&&params[:data][:attributes]
-        document_data=params[:data][:attributes]
-      else
-        document_data=params[:document]
-      end
-
-      document_data.each do |key,value|
-        new_hash[key.gsub("-","_")]=value
-      end
-
-      new_params=ActionController::Parameters.new(new_hash)
-      new_params.permit(:filename, :content_type, :file_contents, :file)
+      params.permit(:tempfile)
     end
 end

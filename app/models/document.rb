@@ -1,7 +1,7 @@
 class Document < ApplicationRecord
 
   def initialize(params = {})
-  file = params.delete(:file)
+  file = params.delete(:tempfile)
   super
   if file
     self.filename = sanitize_filename(file.original_filename)
